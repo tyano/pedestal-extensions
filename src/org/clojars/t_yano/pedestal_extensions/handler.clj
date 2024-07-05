@@ -1,4 +1,4 @@
-(ns pedestal-extensions.handler
+(ns org.clojars.t-yano.pedestal-extensions.handler
   (:require [ring.util.response :refer [response status]]))
 
 (defn exec-handler

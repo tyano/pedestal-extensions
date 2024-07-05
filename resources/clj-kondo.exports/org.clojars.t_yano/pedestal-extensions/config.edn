@@ -1,1 +1,1 @@
-{:lint-as {shelfplan-api.handler/defhandler clojure.core/defn}}
+{:lint-as {org.clojars.t-yano.pedestal-extensions.handler/defhandler clojure.core/defn}}
