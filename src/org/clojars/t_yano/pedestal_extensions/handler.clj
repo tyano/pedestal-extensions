@@ -24,7 +24,7 @@
     (when-not (or (= validation-key :validate) (nil? validation-body))
       (throw (ex-info "The first 2 exprs in body must be `:validate validate-expression`" {:validation-pair validation-pair})))
 
-    (let [current-ns (namespace ::ns)
+    (let [current-ns (str *ns*)
           intercepter-sym intercepter-sym
           handler-sym (symbol (str (name intercepter-sym) "-handler"))
           intercepter-key (keyword current-ns (name intercepter-sym))]
