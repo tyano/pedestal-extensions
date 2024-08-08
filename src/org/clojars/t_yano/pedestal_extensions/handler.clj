@@ -13,7 +13,8 @@
 
 (defmacro defhandler
   [intercepter-sym doc-string bindings & body]
-  (let [resolved-doc-string (if (string? doc-string) doc-string "")
+  (let [metadata            (meta intercepter-sym)
+        resolved-doc-string (if (string? doc-string) doc-string "")
         resolved-bindings   (if (string? doc-string) bindings doc-string)
         resolved-body       (if (string? doc-string) body (cons bindings body))
 
@@ -35,6 +36,8 @@
            (exec-handler context#
                          (fn [~context-binding] ~validation-body)
                          (fn ~resolved-bindings ~@exec-body)))
-         (def ~intercepter-sym
-           {:name ~intercepter-key
-            :enter ~handler-sym})))))
+         (def ~(with-meta intercepter-sym metadata)
+           (with-meta
+             {:name ~intercepter-key
+              :enter ~handler-sym}
+             ~metadata))))))
