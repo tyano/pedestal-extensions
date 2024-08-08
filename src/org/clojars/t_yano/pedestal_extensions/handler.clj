@@ -1,5 +1,6 @@
 (ns org.clojars.t-yano.pedestal-extensions.handler
-  (:require [ring.util.response :refer [response status]]))
+  (:require [ring.util.response :refer [response status]]
+            [io.pedestal.interceptor :refer [interceptor]]))
 
 (defn exec-handler
   [context validator-fn exec-fn]
@@ -38,6 +39,7 @@
                          (fn ~resolved-bindings ~@exec-body)))
          (def ~(with-meta intercepter-sym metadata)
            (with-meta
+            (interceptor
              {:name ~intercepter-key
-              :enter ~handler-sym}
+              :enter ~handler-sym})
              ~metadata))))))

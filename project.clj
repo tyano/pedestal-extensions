@@ -1,4 +1,4 @@
-(defproject org.clojars.t_yano/pedestal-extensions "1.0.1"
+(defproject org.clojars.t_yano/pedestal-extensions "1.0.2-SNAPSHOT"
   :description "Utility functions for Pedestal"
   :url "https://github.com/tyano/pedestal-extensions"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
